@@ -1,0 +1,837 @@
+{% load static %}
+<html lang="en">
+    <style>
+        header {
+    padding: 0;
+    margin: 0;
+    height: 15vh;
+    width: 100%;
+    background: #07051a;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+.tabbed {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tabbed > input {
+  display: none;
+}
+.tabbed > input:checked + label {
+  background-color: rgb(138, 138, 236);
+}
+.tabbed > input:checked + label + div {
+  display: block;
+}
+.tabbed > label {
+  order: 1;
+  flex-grow: 1;
+  padding: 10px;
+}
+.tabbed > div {
+  order: 2;
+  flex-basis: 100%;
+  display: none;
+  padding: 10px;
+}
+
+/* For presentation only */
+
+
+.tabbed {
+
+}
+
+hr {
+  background-color: white;
+  height: 5px;
+  border: 0;
+  margin: 10px 0 0;
+}
+hr + * {
+  margin-top: 10px;
+}
+hr + hr {
+  margin: 0 0;
+}
+/* Add rounded corners to the top left and the top right corner of the image */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 5vh;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 5vh;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container_school{
+width: 100%;
+overflow-wrap: break-word;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+.pag_div{
+display: flex;
+justify-content: center;
+}
+.inactiveLink {
+   color:gray;
+   pointer-events: none;
+   cursor: default;
+}
+  ul.nav-pills {
+      position: fixed;
+}
+  div.col-8 div {
+    height: 500px;
+}
+.school_details_board{
+  background-color:rgb(159 159 159 / 23%);
+  height:auto ;
+  display: flex;
+  justify-content: center;
+}
+.school_details_inner_div{
+  width: 80%;
+  padding: 15px;
+}
+.school_details_contact_div{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    flex-wrap: wrap;
+}
+.school_details_rating{
+    height: 50px;
+    width: 13em;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 10px;
+}
+.options{
+  background-color: #20202214;
+    height: 3em;
+    border-radius: 11px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.info_blocks{
+  margin-bottom: 1.1em;
+  padding: 20px;
+  border-radius: 14px;
+  background-color: lightsteelblue;
+  width: auto;
+  height: auto;
+
+}
+.menu_category{
+  border-bottom: 1px solid #80808066;
+  margin-bottom: 0px;
+}
+.mobile_menu_btn{
+  margin-left: 30%;
+  color: white;
+  background: black;
+}
+.mobile_menu_btn_close{
+  margin-left: 30%;
+  color: white;
+  background: black;
+  display: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Lato");
+
+/* Please note, it's not quite meant to look pretty.
+Hopefully the use of colours would make it easier to see what's going on and edit to your liking! */
+
+/* ONGOING: For better UX, finding solution to have styling on selected tabs*/
+
+/* General */
+
+
+*, *:hover {
+  transition: all 0.3s;
+}
+
+/* Main Tabs */
+label {
+  background-color: white;
+  color: black;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+
+    </style>
+<head>
+  <title>{{s}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/b0e8b75f28.js" crossorigin="anonymous"></script>
+
+
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 110%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: rgb(20, 20, 20);
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;}
+    }
+    .col-sm-2{
+        flex: 0px;
+        width:23px;
+        max-width: 285px;
+      }
+    .col-sm-7{
+        margin-top: 0.9em;
+        }
+    .nav{
+        width:270px;
+        top: 400px;
+        border: 1px solid rgba(128, 128, 128, 0.63);
+        padding: 17px;
+        border-radius: 14px;
+        background-color: rgba(128, 128, 128, 0.03);
+      }
+    .mob_btns{
+      display: none;
+
+    }
+    .container-fluid{
+      width: 80%;
+    }
+    .mob_menu{
+      display:none;
+    }
+
+    @media screen and (max-width: 850px) {
+      .col-sm-2{
+        display: none;
+      }
+      .col-sm-7{
+        flex: 0px;
+        max-width: 100%;
+        }
+      .mob_btns{
+      display:block;
+      }
+      .container-fluid{
+        width: 95%;
+      }
+      .mob_menu{
+        display: block;
+      }
+    }
+
+
+  </style>
+</head>
+
+<header style="display:flex; align-items: center;">
+
+  <div id="menu_buttons" class="mob_btns">
+  <button id="mobile_menu_button" class="mobile_menu_btn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+  <button id="mobile_menu_close_button"  class="mobile_menu_btn_close"><i class="fa fa-close" aria-hidden="true"></i></button>
+  </div>
+
+  <div class="wrap">
+      <div class="search">
+          <input type="text" class="searchTerm" placeholder="What are you looking for?">
+          <button type="submit" class="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+      </div>
+  </div>
+
+</header>
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="6" id="bd">
+
+  <div id="mobile_menus" style="display:none" class="mob_menu">
+    <nav id="myScrollspy">
+        <ul id="ul">
+      <p class="menu_category"><b>ACADEMICS</b></p>
+      {% for i in module %}
+        <li class="nav-item">
+          <a class="nav-link" href="#section{{forloop.counter}}">{{i}}</a>
+        </li>
+      {% endfor %}
+
+      </ul>
+    </nav>
+</div>
+
+<div class="school_details_board">
+  <div class="school_details_inner_div">
+      <p>categories</p>
+      <h1>{{s}}</h1>
+      <div class="school_details_contact_div">
+          <p>{{add}}</p>
+          <p>Contact info</p>
+          <p><a href="{{web_link}}">website</a></p>
+      </div>
+      <br>
+      <div class="school_details_rating">ratings</div>
+  </div>
+</div>
+
+  <div class="container-fluid" id="cf">
+    <div class="row">
+      <nav class="col-sm-2 col-4" id="myScrollspy">
+        <ul class="nav nav-pills flex-column" id="ul">
+          <div class="options">
+            <a href="{% url 'schoolratings:review_page' state city g school %}">Review</a>
+            <p>update</p>
+            <p>compare</p>
+          </div>
+          <br>
+        <p class="menu_category"><b>ACADEMICS</b></p>
+        {% for i in module %}
+        <li class="nav-item">
+          <a class="nav-link" href="#section{{forloop.counter}}">{{i}}</a>
+        </li>
+      {% endfor %}
+        </ul>
+      </nav>
+      <div class="col-sm-7 col-8">
+      {% for i in module %}
+
+      {% if i == "Academic Progress" %}
+
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Academic Progress</h1>
+          {% for i in ac_progress %}
+          <p>{{i}}</p>
+          {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+        {% if i == "Advanced Courses" %}
+
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Advanced Courses</h1>
+
+          {% for i in a_c %}
+          <p>{{i}}</p>
+          {% endfor %}
+        </div>
+
+
+        {% endif %}
+        {% if i == "Test Scores" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Test Scores</h1>
+
+          {% for i in t_s %}
+          <p>{{i}}</p>
+          {% endfor %}
+
+        </div>
+        {% endif %}
+        {% if i == "Equity Overview" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Equity Overview</h1>
+
+          {% for i in e_o %}
+          <p>{{i}}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if i == "Race/Ethnicity" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Race/Ethnicity</h1>
+    
+          <div class="tabbed">
+            {% for i,j in di_r.items %}
+
+                {% if forloop.first %}
+                <input type="radio" id="tabbed-tab-1-{{forloop.counter}}" name="tabbed-tab-1" checked ><label for="tabbed-tab-1-{{forloop.counter}}">{{i}}</label>
+                  {% else %}
+                <input type="radio" id="tabbed-tab-1-{{forloop.counter}}" name="tabbed-tab-1" ><label for="tabbed-tab-1-{{forloop.counter}}">{{i}}</label>
+
+              {% endif %}
+              <div>
+                <div class="tabbed">
+                {% for k,l in j.items %}
+                {% if k == "''" %}
+                  {{l}}
+                
+                {% elif forloop.first %}
+                <input type="radio" id="tabbed-tab-1-{{forloop.parentloop.counter}}-{{forloop.counter}}" name="tabbed-tab-1-{{forloop.parentloop.counter}}" checked><label for="tabbed-tab-1-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{k}}</label>
+                <div><p>{{l}}</p></div>
+                {% else %}
+                <input type="radio" id="tabbed-tab-1-{{forloop.parentloop.counter}}-{{forloop.counter}}" name="tabbed-tab-1-{{forloop.parentloop.counter}}"><label for="tabbed-tab-1-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{k}}</label>
+                <div><p>{{l}}</p></div>
+                {% endif %}
+              
+              {% endfor %}
+            </div>
+              </div>
+           {% endfor %}
+          </div>
+
+
+
+
+  </div>
+  {% endif %}
+  {% if i == "Student Demographics" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Student Demographics</h1>
+          {% for i in student_demography %}
+          <p>{{i}}</p>
+          {% endfor %}
+
+    
+  </div>
+  {% endif %}
+        
+  
+   
+
+
+
+   
+        {% if i == "Low-Income Students" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Low-Income Students</h1>
+          <div class="tabbed">
+            {% for i,j in di_r.items %}
+
+                {% if forloop.first %}
+                <input type="radio" id="tabbed-tab-2-{{forloop.counter}}" name="tabbed-tab-2" checked ><label for="tabbed-tab-2-{{forloop.counter}}">{{i}}</label>
+                  {% else %}
+                <input type="radio" id="tabbed-tab-2-{{forloop.counter}}" name="tabbed-tab-2" ><label for="tabbed-tab-2-{{forloop.counter}}">{{i}}</label>
+
+              {% endif %}
+              <div>
+                <div class="tabbed">
+                {% for k,l in j.items %}
+                {% if k == "''" %}
+                  {{l}}
+                
+                {% elif forloop.first %}
+                <input type="radio" id="tabbed-tab-2-{{forloop.parentloop.counter}}-{{forloop.counter}}" name="tabbed-tab-2-{{forloop.parentloop.counter}}" checked><label for="tabbed-tab-2-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{k}}</label>
+                <div><p>{{l}}</p></div>
+                {% else %}
+                <input type="radio" id="tabbed-tab-2-{{forloop.parentloop.counter}}-{{forloop.counter}}" name="tabbed-tab-2-{{forloop.parentloop.counter}}"><label for="tabbed-tab-2-{{forloop.parentloop.counter}}-{{forloop.counter}}">{{k}}</label>
+                <div><p>{{l}}</p></div>
+                {% endif %}
+              
+              {% endfor %}
+            </div>
+              </div>
+           {% endfor %}
+          </div>
+
+          
+        </div>
+        {% endif %}
+        {% if i == "Teachers & Staff" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Teachers & Staff</h1>
+          <p>abc</p>
+        </div>
+        {% endif %}
+        {% if i == "From the School" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>From the School</h1>
+
+          {% for i in fr_t_schl %}
+          <p>{{i}}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if i == "Reviews" %}
+        <div id="section{{forloop.counter}}" class="info_blocks" style="padding:0">
+
+
+
+
+          <table class"ttbl" style="width:50%;height:50%;margin-left:0;margin-right:0;">
+            <tr style="width:50%;">
+              <div style="width:35%;height:30%;background-color:#277BC0;"><p style="font-weight:bold;font-size:4em;text-align:center;color:WHITE;margin-bottom:0">{{average}}</p>
+                {% if average >= 1 and average < 2 %}
+
+                <p style="text-align:center" >
+                  <span class="fa fa-star "style="color:yellow"></span>
+                  <span class="fa fa-star " ></span>
+                  <span class="fa fa-star " ></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+                {% elif average >= 2 and average < 3 %}
+                <p style="text-align:center" >
+                  <span class="fa fa-star "style="color:yellow"></span>
+                  <span class="fa fa-star " style="color:yellow" ></span>
+                  <span class="fa fa-star " ></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+
+                {% elif average >= 3 and average < 4 %}
+                <p style="text-align:center" >
+                  <span class="fa fa-star "style="color:yellow"></span>
+                  <span class="fa fa-star " style="color:yellow" ></span>
+                  <span class="fa fa-star " style="color:yellow"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+
+                {% elif average >= 4 and average < 5 %}
+                <p style="text-align:center" >
+                  <span class="fa fa-star "style="color:yellow"></span>
+                  <span class="fa fa-star " style="color:yellow" ></span>
+                  <span class="fa fa-star " style="color:yellow"></span>
+                  <span class="fa fa-star" style="color:yellow"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+
+                {% elif average >= 0 and average < 1 %}
+                <p style="text-align:center" >
+                  <span class="fa fa-star "></span>
+                  <span class="fa fa-star "  ></span>
+                  <span class="fa fa-star " ></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                </p>
+
+                {%endif%}
+             
+</p>
+              </div>
+
+
+                <td class="tbl" style="width:60px;margin:auto;padding:30px">
+                  {% for i in starrange reversed%}
+
+                    <p style="font-weight:bold;font-size:1.1em;width:70px">{{i}} <span> star</span> </p>
+
+                  {% endfor %}
+                </td>
+
+                <td class="indtd tbl" style="position:relative;bottom:7px">
+                  <ul class="horizontal-chart-demo " style="padding-left:0px;width:100%;list-style: none;padding-top: 20px;">
+                    
+
+<!-- =========================== -->
+
+{% with name=review.0 %}
+<li data-data=""
+  style="  margin-bottom:20px;width:100px;
+  height: 20px;
+  background-color: #F5EFE6;
+  position: relative;
+  z-index: 2;">
+  {% if name.isnumeric %} 
+  <p style="   width:{{name}} ;
+  height: 20px;
+  background-color: #937DC2;
+  position: relative;
+  z-index: 1;color:black;font-weight:bold;">&nbsp;&nbsp;{{review.0}}%</p>
+  {%endif%}
+</li>
+{%endwith%}
+
+
+{% with name=review.1 %}
+<li data-data=""
+  style=" margin-bottom:20px; width:100px;
+  height: 20px;
+  background-color: #F5EFE6;
+  position: relative;
+  z-index: 2;">
+  {% if name.isnumeric %} 
+  <p style="   width:{{name}} ;
+  height: 20px;
+  background-color: #937DC2;
+  position: relative;
+  z-index: 1;color:black;font-weight:bold;">&nbsp;&nbsp;{{review.1}}%</p>
+  {%endif%}
+</li>
+{%endwith%}
+
+
+{% with name=review.2%}
+<li data-data=""
+  style=" margin-bottom:20px; width:100px;
+  height: 20px;
+  background-color: #F5EFE6;
+  position: relative;
+  z-index: 2;">
+  {% if name.isnumeric %} 
+  <p style="   width:{{name}} ;
+  height: 20px;
+  background-color: #937DC2;
+  position: relative;
+  z-index: 1;color:black;font-weight:bold;">&nbsp;&nbsp;{{review.2}}%</p>
+  {%endif%}
+</li>
+{%endwith%}
+
+{% with name=review.3 %}
+<li data-data=""
+  style=" margin-bottom:20px; width:100px;
+  height: 20px;
+  background-color: #F5EFE6;
+  position: relative;
+  z-index: 2;">
+  {% if name.isnumeric %} 
+  <p style="   width:{{name}} ;
+  height: 20px;
+  background-color: #937DC2;
+  position: relative;
+  z-index: 1;color:black;font-weight:bold;">&nbsp;&nbsp;{{review.3}}%</p>
+  {%endif%}
+</li>
+{%endwith%}
+
+{% with name=review.4 %}
+<li data-data=""
+  style=" margin-bottom:20px; width:100px;
+  height: 20px;
+  background-color: #F5EFE6;
+  position: relative;
+  z-index: 2;">
+  {% if name.isnumeric %} 
+  <p style="   width:{{name}} ;
+  height: 20px;
+  background-color: #937DC2;
+  position: relative;
+  z-index: 1;color:black;font-weight:bold;">&nbsp;&nbsp;{{review.4}}%</p>
+  {%endif%}
+</li>
+{%endwith%}
+
+<!-- =========================== -->
+
+
+                    
+                  </ul>
+
+                </td>
+
+
+            </tr>
+          </table>
+
+        </div>
+        {% endif %}
+        {% if i == "Neighborhood" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1 style="margin-bottom:30px;">Neighborhood</h1>
+        {{sl}}
+          <div style=" width: 80%;height:45%;border-style: solid;border-width: thin;border-color:#277BC0;padding: 20px;margin-top: 20px;margin: auto;border-radius:15px;}">
+            <p style="margin-bottom:5"> &nbsp;{{nh.0}} {{nh.1}} </p><p>&nbsp;{{slm}}: <b>{{sl_name}}</b></p>
+            <table style="margin:auto">
+              <tr style="width:35%">
+                <td style="width:35%">
+                  <p style="padding:0.2%;margin-left:10px;margin-bottom:5"><i class="fa-solid fa-phone"></i> <span>{{nh.3}}</span> </p>
+                </td>
+                <td style="width:25%">
+                  <p style="padding:0.2%;margin-left:10px;margin-bottom:5"><i class="fa-brands fa-facebook"></i> <span> <a href="#">{{nh.6}}</a> </span> </p>
+                </td>
+
+              </tr style="width:25%">
+              <tr>
+                <td style="width:35%">
+                  <p style="padding:0.2%;margin-left:10px;margin-bottom:5"><i class="fa-solid fa-fax"></i> <span>{{nh.4}}</span> </p>
+                </td>
+
+                <td style="width:25%">
+                  <p style="padding:0.2%;margin-left:10px"><i class="fa-solid fa-earth-asia"></i> <span> <a href="#">{{nh.7}}</a> </span> </p>
+                </td>
+              </tr>
+              <tr>
+
+                <td style="width:35%">
+                  <p style="padding:0.2%;margin-left:10px"><i class="fa-solid fa-envelope"></i> <span> <a href="#">{{nh.5}}</a> </span> </p>
+                </td>
+
+              </tr>
+
+            </table>
+
+          </div>
+
+        </div>
+        {% endif %}
+        {% if i == "Courses & Programs" %}
+        <div id="section{{forloop.counter}}" class="info_blocks">
+          <h1>Courses & Programs</h1>
+          {% for i in courses_and_program %}
+          <p>{{i}}</p>
+          {% endfor %}
+
+        </div>
+        {% endif %}
+        {% endfor %}
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <script>
+
+function check(e) {
+  document.getElementById(e).checked = true;
+}
+    // SCRIPT TO SCROLL TO BLOCK
+
+    $(document).ready(function(){
+      // Add smooth scrolling on all links inside the navbar
+      $("#myScrollspy a").on('click', function(event) {
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+          var uji = $(window).scrollTop()
+          console.log(uji)
+          // Store hash
+          var hash = this.hash;
+            console.log(hash)
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 300, function(){
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        }  // End if
+      });
+    });
+
+    //  PREVENT SCROLLING OF MENU SECTION
+
+    $(window).scroll(function(event){
+      var st = $(this).scrollTop();
+      if(st < 386){
+          var l = 400 - st
+          $("ul").css({"top":String(l)+"px"})
+        }
+      else{
+        $("ul").css({"top":"10px"})
+          }
+      lastScrollTop = st;
+      });
+
+
+    // HIDE AND DISPLAY MENU BUTTON AND SECTION
+
+    $("#mobile_menu_button").click(function(){
+      var page_data = $('body').html
+      $("#mobile_menu_button").hide()
+      $("#mobile_menu_close_button").show()
+      $("#mobile_menus").show()
+    });
+
+    $("#mobile_menu_close_button").click(function(){
+      var page_data = $('body').html
+      $("#mobile_menu_button").show()
+      $("#mobile_menu_close_button").hide()
+      $("#mobile_menus").hide()
+    });
+    function City(cityName) {
+  var i;
+  var x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(cityName).style.display = "block";
+}
+    </script>
+  </body>
+
+
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        header {
+    padding: 0;
+    margin: 0;
+    height: 15vh;
+    width: 100%;
+    background: #07051a;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 5vh;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 5vh;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container_school{
+width: 100%;
+overflow-wrap: break-word;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+.pag_div{
+display: flex;
+justify-content: center;
+}
+.inactiveLink {
+   color:gray;
+   pointer-events: none;
+   cursor: default;
+   
+}
+
+
+    </style>
+<head>
+  <title>Schools</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+ 
+  
+
+
+  
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 110%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: rgb(20, 20, 20);
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<header>
+    <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="What are you looking for?">
+           <button type="submit" class="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+
+            <span class="glyphicon glyphicon-search"></span>
+
+          </button>
+        </div>
+     </div>
+</header>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
+    
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-sm-3 col-4" id="myScrollspy">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="#section1">FullStack Academy</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section2">Baobinh.net</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section3">Cheese.vn</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">FullStack Technology</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#section41">Link 1</a>
+              <a class="dropdown-item" href="#section42">Link 2</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="col-sm-9 col-8">
+        <div id="section1" class="bg-success">    
+          <h1>FullStack Academy</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>
+        <div id="section2" class="bg-warning"> 
+          <h1>Baobinh.net</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>        
+        <div id="section3" class="bg-secondary">         
+          <h1>Cheese.vn</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>
+        <div id="section41" class="bg-danger">         
+          <h1>FullStack Technology-1</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>      
+        <div id="section42" class="bg-info">         
+          <h1>FullStack Technology-2</h1>
+          <p>Try to scroll this section and look at the navigation list while scrolling!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
+</html>

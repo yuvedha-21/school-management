@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        header {
+    padding: 0;
+    margin: 0;
+    height: 15vh;
+    width: 100%;
+    background: #07051a;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 5vh;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 5vh;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 40%;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container_school{
+width: 100%;
+overflow-wrap: break-word;
+padding-right: 15px;
+padding-left: 15px;
+margin-right: auto;
+margin-left: auto;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+.pag_div{
+display: flex;
+justify-content: center;
+}
+.inactiveLink {
+   color:gray;
+   pointer-events: none;
+   cursor: default;
+   
+}
+
+
+    </style>
+<head>
+  <title>Schools</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.1/jquery.twbsPagination.min.js"></script>
+ 
+  
+
+
+  
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 110%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: rgb(20, 20, 20);
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<header>
+    <div class="wrap">
+        <div class="search">
+           <input type="text" class="searchTerm" placeholder="What are you looking for?">
+           <button type="submit" class="searchButton">
+            <i class="fa fa-search" aria-hidden="true"></i>
+
+            <span class="glyphicon glyphicon-search"></span>
+
+          </button>
+        </div>
+     </div>
+</header>
+
+
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav" style="height:auto ;">
+     
+      <ul class="nav nav-pills nav-stacked">
+        
+    
+    {% for i,j,k,l,m,n in data %}
+        <div class="item">
+        <div class="card">
+            <div class="container_school">
+              <div id="page-content" class="page-content">
+                <a href="{{i}}" ><h4>{{i}}</h4></a>
+                <p>{{l}}</p>
+                <p>{{j}},{{n}} | {{m}}</p>
+              </div>
+            </div>
+        
+        </div>
+        <br>
+        {% endfor %}
+        
+        
+        <nav aria-label="Page navigation example" id="pagi">
+          <ul class="pagination pagination-lg" style="display: flex;">
+            <li class="page-item"><a class="page-link" href="" id="Previous">Previous</a></li>
+            
+            {% for i in loop %}
+            <li class="page-item"><a class="page-link" id={{i}} href="{{i}}">{{i}}</a></li>
+            {% endfor %}
+           
+            <li class="page-item"><a class="page-link" href="" id="next">Next</a></li>
+          </ul>
+        </nav>
+        
+      </ul><br>
+     </div>
+
+     
+     
+    <div class="col-sm-9">
+      <div class="container">
+        
+      </div>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Footer-->
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                <ul class="list-inline mb-2">
+                    <li class="list-inline-item"><a href="#!">About</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="#!">Contact</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                </ul>
+                <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item me-4">
+                        <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item me-4">
+                        <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<h1 id="page_number" style="display:none;">{{x}}</h1>
+<h1 id="length" style="display:none;">{{length}}</h1>
+</body>
+</html>
+<script>
+// pagination script
+var page_num = parseInt($("#page_number").text())
+var len = parseInt($("#length").text())
+
+if(page_num == len){  $("#next").addClass("inactiveLink"); $("#next").css("color", "gray");  }
+
+if(page_num == 1){  $("#Previous").addClass("inactiveLink");  $("#Previous").css("color", "gray"); }
+
+for(i=1;i<page_num-2;i++){$("#"+String(i)).hide();}
+ 
+for(i=page_num+3;i<=len;i++){ $("#"+String(i)).hide();}
+
+$("#"+page_num).css({"background-color": "blue", "color":"white"}); 
+
+$("#next").attr("href",String(page_num+1));
+
+$("#Previous").attr("href",String(page_num-1));
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
